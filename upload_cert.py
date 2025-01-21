@@ -22,9 +22,9 @@ def main():
     # domain = os.getenv("QINIU_DOMAIN")
 
     # 操作的域名，多个域名用逗号分隔
-    domains_str = os.getenv("QINIU_DOMAINS")
+    domains_str = os.getenv("QINIU_DOMAIN")
     if not domains_str:
-        raise Exception("请设置 QINIU_DOMAINS 环境变量")
+        raise Exception("请设置 QINIU_DOMAIN 环境变量")
     
     # 将域名字符串分割为列表
     domain_list = [d.strip() for d in domains_str.split(",")]
