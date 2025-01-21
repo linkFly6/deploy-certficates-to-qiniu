@@ -10,20 +10,23 @@
 
 ## Github Actions 自动化
 
-这个项目使用 GitHub Actions 来自动化证书的更新和部署。GitHub Actions 会在每两个月的第二十天自动执行这个任务，可以在 `.github/workflows/action.yml` 文件中查看详细的配置。
+这个项目使用 GitHub Actions 来自动化证书的更新和部署。GitHub Actions 会在每两个月的第二十天自动执行这个任务，可以在 `.github/workflows/action.yml` 文件中查看详细的配置，配置教程如下：
 
 1. Fork 这个项目
 2. 打开项目设置 `Settings` -> `Secrets and variables` -> `Actions` -> `New respository secret`
-          <img alt="image" src="https://github.com/user-attachments/assets/22821538-b20d-4458-9560-49ba4d05ebcd" />
 
-3. 配置 Secert
+   <img alt="image" src="https://github.com/user-attachments/assets/22821538-b20d-4458-9560-49ba4d05ebcd" />
+
+4. 配置 Secert
 
    > Secert 在（[.github/workflows/action.yml](https://github.com/linkFly6/deploy-certficates-to-qiniu/blob/main/.github/workflows/action.yml) 中读取， e.g. `${{ secrets.DOMAINS }}`）：
 
    - `DOMAINS` : 域名、或域名列表(用 `,` 号分割)
      > 示例：单域名 `example.com`、泛域名 `*.example.com`、多域名 `example.com,static.example.com`
+
    - `EMAIL` : 邮箱账号，`acme.sh` 申请对应 CA 证书需要
      > 示例：`example@live.com`
+
    - `ALIYUN_ACCESS_KEY_ID` : 阿里云鉴权账号，在 [RAM 访问控制](https://ram.console.aliyun.com/users) 里，对应用户下的 `AccessKey ID`
      <details open>
           
@@ -48,8 +51,10 @@
      > 注意，**RAM用户的 `AccessKey Secret` 只在创建时显示，不支持查看，请妥善保管**，如果错过了第一个创建的保存，需要删除用户再重新创建一个
 
    - `QINIU_ACCESS_KEY` : 七牛云账号 AK，在 [七牛云个人中心](https://portal.qiniu.com/developer/user/key)，`秘钥管理` 里；用来上传七牛云证书、和绑定到域名
+  
    - `QINIU_ACCESS_SECRET`: 七牛云账号 SK，在 [七牛云个人中心](https://portal.qiniu.com/developer/user/key)，`秘钥管理` 里；用来上传七牛云证书、和绑定到域名
 
+5. 整体配置完成后在项目 `Actions` 里查看即可
 
 <br />
 
